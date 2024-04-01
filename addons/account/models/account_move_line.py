@@ -609,7 +609,7 @@ class AccountMoveLine(models.Model):
 
     @api.depends('balance', 'move_id.is_storno')
     def _compute_debit_credit(self):
-        for line in self:
+          for line in self:
             if not line.is_storno:
                 line.debit = line.balance if line.balance > 0.0 else 0.0
                 line.credit = -line.balance if line.balance < 0.0 else 0.0
